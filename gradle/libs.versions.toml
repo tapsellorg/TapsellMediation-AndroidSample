@@ -1,6 +1,6 @@
 [versions]
 agp = "8.7.3"
-kotlin = "2.0.21"
+kotlin = "2.1.10"
 core-ktx = "1.15.0"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.2.1"
@@ -9,16 +9,16 @@ appcompat = "1.7.0"
 leakcanary = "2.14"
 material = "1.12.0"
 constraintlayout = "2.2.0"
-navigation-fragment-ktx = "2.8.5"
+navigation-fragment-ktx = "2.8.7"
 google-appset = "16.1.0"
 google-ads-identifier = "18.2.0"
-tapsell = "1.0.2-beta04"
+tapsell = "1.0.2-beta05"
 lifecycle-livedata-ktx = "2.8.7"
 lifecycle-viewmodel-ktx = "2.8.7"
 lifecycle-runtime-ktx = "2.8.7"
 activity = "1.10.0"
 activity-compose = "1.10.0"
-compose-bom = "2024.12.01"
+compose-bom = "2025.02.00"
 coil = "2.6.0"
 appium = "9.3.0"
 
@@ -36,7 +36,8 @@ lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-view
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 google-ads-identifier = { module = "com.google.android.gms:play-services-ads-identifier", version.ref = "google-ads-identifier" }
 google-appset = { module = "com.google.android.gms:play-services-appset", version.ref = "google-appset" }
-tapsell = { module = "ir.tapsell.mediation:tapsell", version.ref = "tapsell" }
+tapsell = { module = "ir.tapsell:tapsell", version.ref = "tapsell" }
+tapsell-mediation = { module = "ir.tapsell.mediation:tapsell", version.ref = "tapsell" }
 adapter-legacy = { module = "ir.tapsell.mediation.adapter:legacy", version.ref = "tapsell" }
 adapter-legacy-ima-extension = { module = "ir.tapsell.mediation.adapter:legacy-ima-extension", version.ref = "tapsell" }
 adapter-admob = { module = "ir.tapsell.mediation.adapter:admob", version.ref = "tapsell" }

@@ -41,7 +41,7 @@ jobs:
         run: ./gradlew sample-kotlin:assembleRelease
 
       - name: Upload Release Build to Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: release-artifacts
           path: sample-kotlin/build/outputs/apk/release/*universal-release*.apk
