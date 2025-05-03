@@ -9,29 +9,43 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
         mavenLocal()
+        google()
         mavenCentral()
-        maven("https://jitpack.io")
         maven("https://maven.myket.ir")
 
         // Mintegral ads
-        maven("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
-        // IronSource ads
-        maven("https://android-sdk.is.com")
+        maven {
+            url =
+                uri("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea")
+            content { includeGroupByRegex("com.mbridge.*") }
+        }
 
-        // Yandex ads
-        maven("https://dl.appnext.com")
-        maven("https://sdk.tapjoy.com")
+        // IronSource ads
+        maven {
+            url = uri("https://android-sdk.is.com")
+            content { includeGroupByRegex("com.ironsource.*") }
+        }
 
         // ChartBoost ads
-        maven("https://cboost.jfrog.io/artifactory/chartboost-mediation")
-        maven("https://cboost.jfrog.io/artifactory/chartboost-ads")
+        maven {
+            url = uri("https://cboost.jfrog.io/artifactory/chartboost-mediation")
+            content { includeGroup("com.chartboost") }
+        }
+        maven {
+            url = uri("https://cboost.jfrog.io/artifactory/chartboost-ads")
+            content { includeGroup("com.chartboost") }
+        }
 
         // Wortise ads
-        maven("https://maven.wortise.com/artifactory/public")
-        maven("https://artifact.bytedance.com/repository/pangle")
-
+        maven {
+            url = uri("https://maven.wortise.com/artifactory/public")
+            content { includeGroupByRegex("com.wortise.*") }
+        }
+        maven {
+            url = uri("https://artifact.bytedance.com/repository/pangle")
+            content { includeGroupByRegex("com.pangle.*") }
+        }
     }
 }
 
