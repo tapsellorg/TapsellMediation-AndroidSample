@@ -1,62 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/space_small"
-    tools:context=".home.HomeFragment">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_rewarded_video"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/space_small"
-        android:text="@string/rewarded_video"
-        app:layout_constraintBottom_toTopOf="@+id/btn_interstitial"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:padding="@dimen/space_small">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_interstitial"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/space_small"
-        android:text="@string/interstitial"
-        app:layout_constraintBottom_toTopOf="@+id/btn_app_open"
-        app:layout_constraintTop_toBottomOf="@+id/btn_rewarded_video" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_rewarded_video"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_small"
+            android:text="@string/rewarded_video" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_app_open"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/space_small"
-        android:text="@string/app_open"
-        app:layout_constraintBottom_toTopOf="@+id/btn_native_banner"
-        app:layout_constraintTop_toBottomOf="@+id/btn_interstitial" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_interstitial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_small"
+            android:text="@string/interstitial" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_native_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/space_small"
-        android:text="@string/native_ad"
-        app:layout_constraintBottom_toTopOf="@+id/btn_standard_banner"
-        app:layout_constraintTop_toBottomOf="@+id/btn_app_open" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_app_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_small"
+            android:text="@string/app_open" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_standard_banner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/space_small"
-        android:text="@string/standard_banner"
-        app:layout_constraintTop_toBottomOf="@+id/btn_native_banner" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_native_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_small"
+            android:text="@string/native_ad" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_preroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="@dimen/space_small"
-        android:text="@string/pre_roll"
-        app:layout_constraintTop_toBottomOf="@+id/btn_standard_banner" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_standard_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_small"
+            android:text="@string/standard_banner" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_preroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_small"
+            android:text="@string/pre_roll" />
+    </LinearLayout>
+</ScrollView>
