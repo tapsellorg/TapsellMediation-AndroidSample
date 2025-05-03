@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import ir.tapsell.mediation.ad.views.ntv.NativeAdViewContainer
-import ir.tapsell.sample.*
+import ir.tapsell.sample.R
 import ir.tapsell.sample.databinding.FragmentNativeBinding
 import ir.tapsell.sample.utils.addChip
 import ir.tapsell.shared.MULTIPLE_NATIVE_REQUESTS_COUNT
@@ -36,9 +35,6 @@ class NativeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as AppCompatActivity).supportActionBar?.title =
-            resources.getString(R.string.native_ad)
-
 
         TapsellNativeAdNetworks.map { adNetwork ->
             binding.chipAdNetworks.addChip(requireContext(), adNetwork.name) {
