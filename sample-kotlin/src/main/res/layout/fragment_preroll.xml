@@ -79,16 +79,14 @@
 
     </LinearLayout>
 
-    <com.google.android.material.textview.MaterialTextView
+    <ir.tapsell.sample.utils.ConsoleView
         android:id="@+id/tv_log"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:background="#ddd"
-        android:padding="8dp"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toTopOf="@id/input_zone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_min="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/preroll_container" />
 
