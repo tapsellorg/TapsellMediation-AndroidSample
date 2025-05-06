@@ -45,15 +45,13 @@
             android:checked="false" />
     </LinearLayout>
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_request"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="8dp"
         android:text="@string/request"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ly_switch_native_type" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_request_multiple"
@@ -77,19 +75,16 @@
         android:text="@string/destroy"
         app:layout_constraintTop_toBottomOf="@+id/btn_show" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <ir.tapsell.shared.ConsoleView
         android:id="@+id/tv_log"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:background="#ddd"
-        android:padding="8dp"
+        android:layout_margin="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/input_zone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_min="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_destroy"
-        app:layout_constraintBottom_toTopOf="@+id/input_zone"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_destroy" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/input_zone"
