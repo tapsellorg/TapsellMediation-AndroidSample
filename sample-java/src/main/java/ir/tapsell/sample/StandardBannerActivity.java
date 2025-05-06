@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +13,7 @@ import ir.tapsell.mediation.ad.AdStateListener;
 import ir.tapsell.mediation.ad.request.BannerSize;
 import ir.tapsell.mediation.ad.request.RequestResultListener;
 import ir.tapsell.mediation.ad.views.banner.BannerContainer;
+import ir.tapsell.shared.ConsoleView;
 import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys;
 
 public class StandardBannerActivity extends AppCompatActivity {
@@ -22,7 +22,7 @@ public class StandardBannerActivity extends AppCompatActivity {
     private Button showButton;
     private Button destroyButton;
     private String responseId;
-    private TextView logTextView;
+    private ConsoleView logTextView;
     private BannerContainer container;
 
     @Override

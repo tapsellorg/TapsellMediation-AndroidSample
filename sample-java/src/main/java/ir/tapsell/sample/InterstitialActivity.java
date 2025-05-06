@@ -3,7 +3,6 @@ package ir.tapsell.sample;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +11,13 @@ import ir.tapsell.mediation.Tapsell;
 import ir.tapsell.mediation.ad.AdStateListener;
 import ir.tapsell.mediation.ad.request.RequestResultListener;
 import ir.tapsell.mediation.ad.show.AdShowCompletionState;
+import ir.tapsell.shared.ConsoleView;
 import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys;
 
 public class InterstitialActivity extends AppCompatActivity {
     private static final String TAG = "RewardActivity";
     private Button showButton;
-    private TextView logTextView;
+    private ConsoleView logTextView;
     private String responseId;
 
     @Override

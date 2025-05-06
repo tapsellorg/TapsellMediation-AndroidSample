@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +13,7 @@ import ir.tapsell.mediation.ad.AdStateListener;
 import ir.tapsell.mediation.ad.request.RequestResultListener;
 import ir.tapsell.mediation.ad.show.AdShowCompletionState;
 import ir.tapsell.mediation.ad.views.ntv.NativeAdViewContainer;
+import ir.tapsell.shared.ConsoleView;
 import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys;
 
 public class NativeBannerActivity extends AppCompatActivity {
@@ -21,7 +21,7 @@ public class NativeBannerActivity extends AppCompatActivity {
     private static final String TAG = "NativeBannerActivity";
     private Button showButton;
     private Button destroyButton;
-    private TextView logTextView;
+    private ConsoleView logTextView;
     private NativeAdViewContainer container;
     private String responseId;
 
