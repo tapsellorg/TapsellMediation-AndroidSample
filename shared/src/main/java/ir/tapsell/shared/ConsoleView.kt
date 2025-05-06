@@ -1,22 +1,22 @@
-package ir.tapsell.sample.utils
+package ir.tapsell.shared
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.text.method.ScrollingMovementMethod
 import android.util.AttributeSet
-import androidx.core.view.setPadding
-import com.google.android.material.textview.MaterialTextView
+import android.widget.TextView
 
 @SuppressLint("SetTextI18n")
 class ConsoleView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = android.R.attr.textViewStyle,
-) : MaterialTextView(context, attrs, defStyleAttr) {
+) : TextView(context, attrs, defStyleAttr) {
     init {
         setBackgroundColor(0xFFDDDDDD.toInt())
-        setPadding((Resources.getSystem().displayMetrics.density * 8).toInt())
+        val padding = (Resources.getSystem().displayMetrics.density * 8).toInt()
+        setPadding(padding, padding, padding, padding)
 
         movementMethod = ScrollingMovementMethod()
         isVerticalScrollBarEnabled = true
@@ -24,4 +24,6 @@ class ConsoleView @JvmOverloads constructor(
         if (isInEditMode)
             text = "This is a sample log"
     }
+
+    // TODO use a dedicated method for logging instead of setText/appendText
 }

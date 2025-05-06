@@ -79,7 +79,7 @@
 
     </LinearLayout>
 
-    <ir.tapsell.sample.utils.ConsoleView
+    <ir.tapsell.shared.ConsoleView
         android:id="@+id/tv_log"
         android:layout_width="match_parent"
         android:layout_height="0dp"
