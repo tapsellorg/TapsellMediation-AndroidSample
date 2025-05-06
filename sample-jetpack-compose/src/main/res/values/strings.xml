@@ -1,13 +1,3 @@
 <resources>
     <string name="app_name">Tapsell Jetpack Compose Sample</string>
-    <string name="rewarded_video">Rewarded Video</string>
-    <string name="request">Request</string>
-    <string name="show">Show</string>
-    <string name="destroy">Destroy</string>
-    <string name="interstitial">Interstitial</string>
-    <string name="native_banner">Native Banner</string>
-    <string name="standard_banner">Standard Banner</string>
-    <string name="native_video">Native Video</string>
-    <string name="preroll">PreRoll</string>
-    <string name="vast">Vast</string>
 </resources>

@@ -1,17 +1,4 @@
 <resources>
     <string name="app_name">Tapsell Android Kotlin Sample</string>
-    <string name="rewarded_video">Rewarded Video</string>
-    <string name="request">Request</string>
-    <string name="request_multiple">Multiple Requests (5)</string>
-    <string name="show">Show</string>
-    <string name="destroy">Destroy</string>
-    <string name="interstitial">Interstitial</string>
-    <string name="app_open">AppOpen</string>
-    <string name="native_ad">Native</string>
-    <string name="native_banner">Native Banner</string>
-    <string name="standard_banner">Standard Banner</string>
-    <string name="native_video">Native Video</string>
-    <string name="pre_roll">PreRoll</string>
-    <string name="vast">Vast</string>
     <string name="zone_id">zoneId</string>
 </resources>
