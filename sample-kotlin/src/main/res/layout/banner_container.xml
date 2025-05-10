@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#dedede"
-        android:text="Sponsored"
+        android:text="@string/sponsored"
         android:textColor="#aaaaaa"
         android:textSize="9sp"
         app:layout_constraintEnd_toStartOf="@+id/tapsell_native_ad_media"

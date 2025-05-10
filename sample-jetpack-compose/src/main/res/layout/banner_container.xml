@@ -50,7 +50,7 @@
             android:layout_alignParentEnd="true"
             android:background="#dedede"
             android:padding="3dp"
-            android:text="Sponsored"
+            android:text="@string/sponsored"
             android:textColor="#aaaaaa"
             android:textSize="11sp" />
 

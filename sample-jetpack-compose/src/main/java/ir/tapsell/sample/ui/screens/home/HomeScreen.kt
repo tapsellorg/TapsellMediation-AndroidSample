@@ -26,6 +26,7 @@ import ir.tapsell.mediation.Tapsell
 import ir.tapsell.sample.R
 import ir.tapsell.sample.navigation.Routes
 import ir.tapsell.shared.TestTags
+import ir.tapsell.shared.R as ShR
 
 private const val TAG = "HomeScreen"
 
@@ -34,7 +35,7 @@ private const val TAG = "HomeScreen"
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
 ) {
     val activity = LocalActivity.current
 
@@ -71,7 +72,7 @@ fun HomeScreen(
                     navController.navigate(Routes.REWARDED_VIDEO)
                 }
             ) {
-                Text(text = stringResource(R.string.rewarded_video))
+                Text(text = stringResource(ShR.string.rewarded_video))
             }
 
             Button(
@@ -82,7 +83,7 @@ fun HomeScreen(
                     navController.navigate(Routes.INTERSTITIAL)
                 }
             ) {
-                Text(text = stringResource(R.string.interstitial))
+                Text(text = stringResource(ShR.string.interstitial))
             }
 
             Button(
@@ -93,7 +94,7 @@ fun HomeScreen(
                     navController.navigate(Routes.STANDARD_BANNER)
                 }
             ) {
-                Text(text = stringResource(R.string.standard_banner))
+                Text(text = stringResource(ShR.string.standard_banner))
             }
 
             Button(
@@ -104,7 +105,7 @@ fun HomeScreen(
                     navController.navigate(Routes.NATIVE_BANNER)
                 }
             ) {
-                Text(text = stringResource(R.string.native_banner))
+                Text(text = stringResource(ShR.string.native_banner))
             }
 
             Button(
@@ -115,7 +116,7 @@ fun HomeScreen(
                     navController.navigate(Routes.PRE_ROLL)
                 }
             ) {
-                Text(text = stringResource(R.string.preroll))
+                Text(text = stringResource(ShR.string.preroll))
             }
         }
     }

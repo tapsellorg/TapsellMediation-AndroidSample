@@ -79,7 +79,7 @@
     <fragment
         android:id="@+id/fragment_preroll"
         android:name="ir.tapsell.sample.preroll.PreRollFragment"
-        android:label="@string/pre_roll"
+        android:label="@string/preroll"
         tools:layout="@layout/fragment_preroll" />
 
 </navigation>

@@ -27,6 +27,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import ir.tapsell.mediation.ad.views.ntv.NativeAdViewContainer
 import ir.tapsell.sample.R
 import ir.tapsell.sample.ui.components.LogText
+import ir.tapsell.shared.R as ShR
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,7 +47,7 @@ fun NativeBannerScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.native_banner))
+                    Text(text = stringResource(ShR.string.native_banner))
                 }
             )
         }
@@ -63,7 +64,7 @@ fun NativeBannerScreen(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = (viewModel::requestAd)
             ) {
-                Text(text = stringResource(R.string.request))
+                Text(text = stringResource(ShR.string.request))
             }
 
             Button(
@@ -71,7 +72,7 @@ fun NativeBannerScreen(
                 enabled = viewModel.isShowButtonEnabled,
                 onClick = viewModel::onShowClick
             ) {
-                Text(text = stringResource(R.string.show))
+                Text(text = stringResource(ShR.string.show))
             }
 
             Button(
@@ -79,7 +80,7 @@ fun NativeBannerScreen(
                 enabled = viewModel.isDestroyButtonEnabled,
                 onClick = viewModel::destroyAd
             ) {
-                Text(text = stringResource(R.string.destroy))
+                Text(text = stringResource(ShR.string.destroy))
             }
 
             LogText(logMessage)

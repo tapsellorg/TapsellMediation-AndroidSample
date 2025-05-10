@@ -14,14 +14,14 @@ appId: ir.tapsell.sample
       repeat: 1
       delay: 2000
 - tapOn:
-    text: Request Ad
+    text: Request
     repeat: 1
     delay: 5000
 - extendedWaitUntil:
     visible: .*onSuccess.*
     timeout: 5000
 - tapOn:
-    text: Show Ad
+    text: Show
 - extendedWaitUntil:
     visible: .*onAdImpression.*
     timeout: 10000

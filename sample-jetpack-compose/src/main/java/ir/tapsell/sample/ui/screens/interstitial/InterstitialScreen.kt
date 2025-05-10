@@ -19,8 +19,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import ir.tapsell.sample.R
 import ir.tapsell.sample.ui.components.LogText
+import ir.tapsell.shared.R as ShR
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -36,7 +36,7 @@ fun InterstitialScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.interstitial))
+                    Text(text = stringResource(ShR.string.interstitial))
                 }
             )
         }
@@ -53,7 +53,7 @@ fun InterstitialScreen(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = (viewModel::requestAd)
             ) {
-                Text(text = stringResource(R.string.request))
+                Text(text = stringResource(ShR.string.request))
             }
 
             Button(
@@ -61,7 +61,7 @@ fun InterstitialScreen(
                 enabled = viewModel.isShowButtonEnabled,
                 onClick = { viewModel.showAd(activity) }
             ) {
-                Text(text = stringResource(R.string.show))
+                Text(text = stringResource(ShR.string.show))
             }
 
             LogText(logMessage)

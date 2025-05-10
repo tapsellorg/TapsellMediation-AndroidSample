@@ -27,13 +27,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import ir.tapsell.mediation.ad.views.banner.BannerContainer
 import ir.tapsell.sample.R
 import ir.tapsell.sample.ui.components.LogText
+import ir.tapsell.shared.R as ShR
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StandardBannerScreen(
     modifier: Modifier = Modifier,
-    viewModel: StandardBannerViewModel = viewModel()
+    viewModel: StandardBannerViewModel = viewModel(),
 ) {
     val context = LocalActivity.current as Activity
     val logMessage by viewModel.logMessage.collectAsState()
@@ -47,7 +48,7 @@ fun StandardBannerScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Standard Banner")
+                    Text(text = stringResource(ShR.string.standard_banner))
                 }
             )
         }
@@ -64,7 +65,7 @@ fun StandardBannerScreen(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = (viewModel::requestAd)
             ) {
-                Text(text = stringResource(R.string.request))
+                Text(text = stringResource(ShR.string.request))
             }
 
             Button(
@@ -72,7 +73,7 @@ fun StandardBannerScreen(
                 enabled = viewModel.isShowButtonEnabled,
                 onClick = { viewModel.showAd(context) }
             ) {
-                Text(text = stringResource(R.string.show))
+                Text(text = stringResource(ShR.string.show))
             }
 
             Button(
@@ -80,7 +81,7 @@ fun StandardBannerScreen(
                 enabled = viewModel.isDestroyButtonEnabled,
                 onClick = viewModel::destroyAd
             ) {
-                Text(text = stringResource(R.string.destroy))
+                Text(text = stringResource(ShR.string.destroy))
             }
 
             LogText(logMessage)

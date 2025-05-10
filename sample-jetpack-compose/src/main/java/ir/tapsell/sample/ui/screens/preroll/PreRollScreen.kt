@@ -19,6 +19,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -28,6 +29,7 @@ import ir.tapsell.sample.R
 import ir.tapsell.sample.model.PreRollContainer
 import ir.tapsell.sample.ui.components.LogText
 import ir.tapsell.sample.ui.theme.TapsellSampleTheme
+import ir.tapsell.shared.R as ShR
 
 private const val BUTTON_WIDTH = 0.5F
 
@@ -35,7 +37,7 @@ private const val BUTTON_WIDTH = 0.5F
 @Composable
 fun PreRollScreen(
     modifier: Modifier = Modifier,
-    viewModel: PreRollViewModel = viewModel()
+    viewModel: PreRollViewModel = viewModel(),
 ) {
     val context = LocalActivity.current as Activity
     val exoplayer = remember(viewModel.adViewContainer) {
@@ -60,7 +62,7 @@ fun PreRollScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "PreRoll")
+                    Text(text = stringResource(ShR.string.preroll))
                 }
             )
         }
@@ -79,10 +81,9 @@ fun PreRollScreen(
 
             Button(
                 modifier = Modifier.fillMaxWidth(BUTTON_WIDTH),
-                onClick = {
-                    viewModel.requestAd(exoplayer) }
+                onClick = { viewModel.requestAd(exoplayer) }
             ) {
-                Text(text = "Request Ad")
+                Text(text = stringResource(ShR.string.request))
             }
 
             Button(
@@ -90,7 +91,7 @@ fun PreRollScreen(
                 enabled = viewModel.isShowButtonEnabled.value,
                 onClick = viewModel::showVideo
             ) {
-                Text(text = "Show Ad")
+                Text(text = stringResource(ShR.string.show))
             }
 
             Button(
@@ -98,7 +99,7 @@ fun PreRollScreen(
                 enabled = viewModel.isShowButtonEnabled.value,
                 onClick = exoplayer::restartPlayer
             ) {
-                Text(text = "Restart Player")
+                Text(text = stringResource(ShR.string.replay_video))
             }
 
             LogText(viewModel.log.value)
