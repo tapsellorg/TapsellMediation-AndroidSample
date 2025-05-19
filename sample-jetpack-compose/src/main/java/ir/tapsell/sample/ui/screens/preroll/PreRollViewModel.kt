@@ -40,8 +40,8 @@ class PreRollViewModel : BaseViewModel() {
                         log(TAG, "onSuccess: $adId")
                     }
 
-                    override fun onFailure() {
-                        addLog("onFailure")
+                    override fun onFailure(message: String) {
+                        addLog("onFailure: $message")
                         isShowButtonEnabled.value = false
                     }
                 })

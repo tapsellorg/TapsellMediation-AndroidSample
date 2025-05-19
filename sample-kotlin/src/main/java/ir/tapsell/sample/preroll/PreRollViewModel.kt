@@ -31,8 +31,8 @@ class PreRollViewModel : BaseViewModel() {
             videoPlayer,
             videoPath,
             object : RequestResultListener {
-                override fun onFailure() {
-                    log(TAG, "onFailure", Log.ERROR)
+                override fun onFailure(message: String) {
+                    log(TAG, "onFailure: $message", Log.ERROR)
                 }
 
                 override fun onSuccess(adId: String) {
