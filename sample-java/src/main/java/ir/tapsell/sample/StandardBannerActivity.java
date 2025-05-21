@@ -65,9 +65,9 @@ public class StandardBannerActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure() {
+                    public void onFailure(@NonNull String message) {
                         if (isDestroyed()) return;
-                        log("onFailure", Log.ERROR);
+                        log("onFailure" + message, Log.ERROR);
                     }
                 });
     }

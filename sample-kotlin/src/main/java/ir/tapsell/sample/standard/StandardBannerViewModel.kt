@@ -32,8 +32,8 @@ class StandardBannerViewModel : BaseViewModel() {
 
     fun requestAd(zoneId: String) {
         Tapsell.requestBannerAd(zoneId, selectedBannerSize, object : RequestResultListener {
-            override fun onFailure() {
-                log(TAG, "onFailure", Log.ERROR)
+            override fun onFailure(message: String) {
+                log(TAG, "onFailure: $message", Log.ERROR)
             }
 
             override fun onSuccess(adId: String) {
