@@ -103,6 +103,7 @@ dependencies {
     implementation(libs.adapter.yandex)
     implementation(libs.adapter.chartboost)
     implementation(libs.adapter.wortise)
+    compileOnly("com.huawei.hms:ads-identifier:3.4.56.300")
 
     testImplementation(libs.appium)
     testImplementation(libs.junit)
