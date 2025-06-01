@@ -10,10 +10,6 @@ on:
         description: 'Admob App Key'
         required: true
         default: 'ca-app-pub-3940256099942544~3347511713'
-      ApplovinAppKey:
-        description: 'Applovin App Key'
-        required: true
-        default: '5WfZLCGTQmDr6Mf7BBEf5blVwrf8VBMJSmwUSq9-1q5bPpCH_OGAWEP2z2lRkmonLgPzG6gbL4DlvUF9frFmt6'
       AppName:
         description: 'App name'
         required: true
@@ -53,7 +49,7 @@ jobs:
           SIGNING_STORE_PASSWORD: ${{ secrets.MYAPP_RELEASE_STORE_PASSWORD }}
         run: |
           echo "GITHUB_WORKSPACE: ${{ github.workspace }}"
-          ./scripts/change-app.sh "${{ github.event.inputs.TapsellAppKey }}" "${{ github.event.inputs.AdmobAppKey }}" "${{ github.event.inputs.ApplovinAppKey }}" "${{ github.event.inputs.AppName }}"
+          ./scripts/change-app.sh "${{ github.event.inputs.TapsellAppKey }}" "${{ github.event.inputs.AdmobAppKey }}" "${{ github.event.inputs.AppName }}"
           ./gradlew sample-kotlin:assembleRelease
 
       - name: Upload Release Build to Artifacts
