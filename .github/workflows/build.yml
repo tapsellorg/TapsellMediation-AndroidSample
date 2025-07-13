@@ -20,3 +20,9 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+
+      - name: Upload Apks to Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apks
+          path: ./*/build/outputs/apk/release/*universal-release*.apk
