@@ -29,24 +29,7 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Decode Keystore
-        env:
-          # Create `SIGNING_KEY_STORE_BASE64` environment in GitHub secrets and place the base64 encoded value
-          # of your keystore there.
-          ENCODED_STRING: ${{ secrets.SIGNING_KEY_STORE_BASE64 }}
-          SIGNING_KEY_STORE_PATH: ${{ secrets.MYAPP_RELEASE_STORE_FILE }}
-
-        run: |
-          echo "keystore path: $MYAPP_RELEASE_STORE_FILE"
-          echo $ENCODED_STRING > keystore-b64.txt
-          base64 -d keystore-b64.txt > release.keystore
-
       - name: Build Release apk
-        env:
-          SIGNING_KEY_STORE_PATH: ${{ secrets.MYAPP_RELEASE_STORE_FILE }}
-          SIGNING_KEY_ALIAS: ${{ secrets.MYAPP_RELEASE_KEY_ALIAS }}
-          SIGNING_KEY_PASSWORD: ${{ secrets.MYAPP_RELEASE_KEY_PASSWORD }}
-          SIGNING_STORE_PASSWORD: ${{ secrets.MYAPP_RELEASE_STORE_PASSWORD }}
         run: |
           echo "GITHUB_WORKSPACE: ${{ github.workspace }}"
           ./scripts/change-app.sh "${{ github.event.inputs.TapsellAppKey }}" "${{ github.event.inputs.AdmobAppKey }}" "${{ github.event.inputs.AppName }}"
