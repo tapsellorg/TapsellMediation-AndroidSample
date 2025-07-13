@@ -1,19 +1,16 @@
 import org.jetbrains.kotlin.compose.compiler.gradle.ComposeFeatureFlag
 
 plugins {
-    alias(libs.plugins.androidApplication)
+    id("tapsell-application")
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.composeCompiler)
 }
 
 android {
     namespace = "ir.tapsell.sample"
-    compileSdk = 35
 
     defaultConfig {
         applicationId = "ir.tapsell.sample"
-        minSdk = 21
-        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

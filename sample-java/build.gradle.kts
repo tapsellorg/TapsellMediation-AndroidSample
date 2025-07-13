@@ -1,15 +1,12 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    id("tapsell-application")
 }
 
 android {
     namespace = "ir.tapsell.sample"
-    compileSdk = 35
 
     defaultConfig {
         applicationId = "ir.tapsell.sample"
-        minSdk = 21
-        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 

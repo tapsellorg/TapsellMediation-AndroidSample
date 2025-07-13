@@ -50,6 +50,9 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "TapsellSample"
+
+includeBuild("build-logic")
+
 include(":sample-kotlin")
 include(":sample-java")
 include(":sample-jetpack-compose")

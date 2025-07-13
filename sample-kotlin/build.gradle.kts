@@ -1,18 +1,15 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    id("tapsell-application")
     alias(libs.plugins.kotlinAndroid)
 }
 
 android {
     namespace = "ir.tapsell.sample"
-    compileSdk = 35
 
     setProperty("archivesBaseName", properties["TAPSELL_APP_NAME"] as String)
 
     defaultConfig {
         applicationId = "ir.tapsell.sample"
-        minSdk = 21
-        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
