@@ -1,26 +1,24 @@
 [versions]
-agp = "8.9.1"
-kotlin = "2.1.20"
-core-ktx = "1.15.0"
+agp = "8.11.1"
+kotlin = "2.2.0"
+core-ktx = "1.16.0"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.2.1"
 espresso-core = "3.6.1"
-appcompat = "1.7.0"
+appcompat = "1.7.1"
 leakcanary = "2.14"
 material = "1.12.0"
 constraintlayout = "2.2.1"
-navigation-fragment-ktx = "2.8.9"
+navigation-fragment-ktx = "2.9.2"
 google-appset = "16.1.0"
 google-ads-identifier = "18.2.0"
-tapsell = "1.0.2-beta08"
-lifecycle-livedata-ktx = "2.8.7"
-lifecycle-viewmodel-ktx = "2.8.7"
-lifecycle-runtime-ktx = "2.8.7"
+tapsell = "1.0.2-beta09"
+lifecycle = "2.9.2"
 activity = "1.10.1"
 activity-compose = "1.10.1"
-compose-bom = "2025.03.01"
+compose-bom = "2025.07.00"
 coil = "2.7.0"
-appium = "9.4.0"
+appium = "9.5.0"
 
 [libraries]
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-fragment-ktx" }
@@ -31,13 +29,12 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 leakcanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle-livedata-ktx" }
-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycle" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 google-ads-identifier = { module = "com.google.android.gms:play-services-ads-identifier", version.ref = "google-ads-identifier" }
 google-appset = { module = "com.google.android.gms:play-services-appset", version.ref = "google-appset" }
 tapsell = { module = "ir.tapsell:tapsell", version.ref = "tapsell" }
-tapsell-mediation = { module = "ir.tapsell.mediation:tapsell", version.ref = "tapsell" }
 adapter-legacy = { module = "ir.tapsell.mediation.adapter:legacy", version.ref = "tapsell" }
 adapter-legacy-ima-extension = { module = "ir.tapsell.mediation.adapter:legacy-ima-extension", version.ref = "tapsell" }
 adapter-admob = { module = "ir.tapsell.mediation.adapter:admob", version.ref = "tapsell" }
@@ -50,7 +47,7 @@ adapter-liftoff = { module = "ir.tapsell.mediation.adapter:liftoff", version.ref
 adapter-yandex = { module = "ir.tapsell.mediation.adapter:yandex", version.ref = "tapsell" }
 adapter-chartboost = { module = "ir.tapsell.mediation.adapter:chartboost", version.ref = "tapsell" }
 adapter-wortise = { module = "ir.tapsell.mediation.adapter:wortise", version.ref = "tapsell" }
-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activity" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }

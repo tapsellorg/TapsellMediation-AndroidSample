@@ -59,7 +59,6 @@ android {
     composeCompiler {
         includeSourceInformation = true
         featureFlags = setOf(
-            ComposeFeatureFlag.StrongSkipping,
             ComposeFeatureFlag.OptimizeNonSkippingGroups
         )
         reportsDestination = layout.buildDirectory.dir("compose_compiler")
