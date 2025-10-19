@@ -49,7 +49,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TapsellSample"
+rootProject.name = "MediationAndroidSample"
 
 includeBuild("build-logic")
 
