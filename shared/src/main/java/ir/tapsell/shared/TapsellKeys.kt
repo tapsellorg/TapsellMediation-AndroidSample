@@ -1,6 +1,18 @@
 package ir.tapsell.shared
 
-val TapsellAdNetworks = TapsellKeys::class.sealedSubclasses.mapNotNull { it.objectInstance }.sorted
+val TapsellAdNetworks: List<TapsellKeys> = listOf(
+    TapsellKeys.TapsellMediationKeys,
+    TapsellKeys.LegacyKeys,
+    TapsellKeys.AdmobKeys,
+    TapsellKeys.FyberKeys,
+    TapsellKeys.ApplovinKeys,
+    TapsellKeys.MintegralKeys,
+    TapsellKeys.IronSourceKeys,
+    TapsellKeys.LiftoffKeys,
+    TapsellKeys.ChartBoostKeys,
+    TapsellKeys.WortiseKeys,
+    TapsellKeys.YandexKeys,
+).sorted
 val TapsellAppOpenAdNetworks = TapsellAdNetworks.filter { it.appOpen != null }
 val TapsellNativeAdNetworks = TapsellAdNetworks.filter { it.native != null }
 val TapsellPreRollAdNetworks = TapsellAdNetworks.filter { it.preRoll != null }
