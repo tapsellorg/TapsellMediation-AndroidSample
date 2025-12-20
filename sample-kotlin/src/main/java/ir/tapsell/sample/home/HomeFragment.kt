@@ -51,6 +51,9 @@ class HomeFragment : Fragment() {
         binding.btnNativeBanner.setOnClickListener {
             navController.navigate(R.id.action_fragment_home_to_fragment_native_banner)
         }
+        binding.btnNativeListBanner.setOnClickListener {
+            // navigate to native list fragment
+        }
         binding.btnPreroll.setOnClickListener {
             navController.navigate(R.id.action_fragment_home_to_fragment_preroll)
         }
