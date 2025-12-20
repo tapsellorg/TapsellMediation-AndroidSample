@@ -76,6 +76,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.kotlin.reflect)
     implementation(libs.coil)
+    implementation(libs.timber)
     implementation(libs.google.appset)
     implementation(libs.google.ads.identifier)
     implementation(project(":shared"))
