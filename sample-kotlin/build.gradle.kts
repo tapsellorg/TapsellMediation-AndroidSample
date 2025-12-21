@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.kotlin.reflect)
     implementation(libs.coil)
     implementation(libs.timber)
+    implementation(libs.viewbinding)
     implementation(libs.google.appset)
     implementation(libs.google.ads.identifier)
     implementation(project(":shared"))
