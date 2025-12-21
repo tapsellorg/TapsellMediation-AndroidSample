@@ -17,7 +17,7 @@ import ir.tapsell.sample.databinding.FragmentNativeListBinding
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
-class NativeListFragment internal constructor() : Fragment() {
+class NativeListFragment internal constructor() : Fragment(), AdsAdapter.Callback {
     private val binding by viewBinding { FragmentNativeListBinding.bind(it) }
 
     private val viewModel: NativeListViewModel by viewModels()
@@ -34,7 +34,13 @@ class NativeListFragment internal constructor() : Fragment() {
         with(binding.recyclerView) {
             setHasFixedSize(true) // to improve performance
             layoutManager = LinearLayoutManager(context)
-            adapter = FoodsAdapter().also { foodsAdapter = it }
+            adapter = AdsAdapter(
+                delegatedAdapter = FoodsAdapter().also { foodsAdapter = it },
+                adInterval = NativeListState.AdInterval,
+                callback = this@NativeListFragment,
+                activity = requireActivity(),
+                onAdIdRequest = { viewModel.pullAdId() }
+            )
         }
 
         // infinity scroll implementation
@@ -65,5 +71,10 @@ class NativeListFragment internal constructor() : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onAdImpressed(adId: String) {
+        Timber.d("ad was shown $adId")
+        viewModel.consumeAd(adId)
     }
 }

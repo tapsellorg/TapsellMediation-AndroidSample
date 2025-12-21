@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.application
 import androidx.lifecycle.viewModelScope
+import ir.tapsell.mediation.Tapsell
+import ir.tapsell.mediation.ad.request.RequestResultListener
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -20,6 +22,7 @@ class NativeListViewModel(application: Application) : AndroidViewModel(applicati
 
     fun loadMoreData() {
         fetchMoreFoodItems()
+        fetchMoreAdsIfRequired()
     }
 
     private fun fetchMoreFoodItems() {
@@ -40,5 +43,42 @@ class NativeListViewModel(application: Application) : AndroidViewModel(applicati
                 )
             }
         }
+    }
+
+    fun consumeAd(adId: String) {
+        _state.update { it.copy(adIds = it.adIds - adId) }
+
+        fetchMoreAdsIfRequired()
+    }
+
+    fun pullAdId(): String? {
+        return _state.value.adIds.firstOrNull()
+    }
+
+    private fun fetchMoreAdsIfRequired() {
+        if (_state.value.adIds.size >= NativeListState.BatchAdRequestCount) {
+            Timber.d("fetching ads skipped. current ads count: ${_state.value.adIds.size}")
+            return
+        }
+
+        fetchMoreAds(NativeListState.ZoneId)
+    }
+
+    private fun fetchMoreAds(zoneId: String) {
+        Timber.d("requesting for ad")
+        Tapsell.requestMultipleNativeAds(
+            zoneId,
+            /* maximumCount = */NativeListState.BatchAdRequestCount,
+            object : RequestResultListener {
+                override fun onFailure(message: String) {
+                    Timber.d("request ad failed: $message")
+                }
+
+                override fun onSuccess(adId: String) {
+                    Timber.d("request ad success: id=$adId")
+                    _state.update { it.copy(adIds = it.adIds + adId) }
+                }
+            }
+        )
     }
 }
