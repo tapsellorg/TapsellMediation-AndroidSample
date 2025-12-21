@@ -10,6 +10,7 @@ import ir.tapsell.mediation.ad.AdStateListener
 import ir.tapsell.mediation.ad.show.AdShowCompletionState
 import ir.tapsell.mediation.ad.views.ntv.NativeAdView
 import ir.tapsell.sample.databinding.ItemNativeListAdBinding
+import org.jetbrains.annotations.TestOnly
 import timber.log.Timber
 
 internal class AdsAdapter(
@@ -153,11 +154,14 @@ internal class AdsAdapter(
         fun onAdImpressed(adId: String)
     }
 
-    private fun isAdPosition(position: Int): Boolean {
+    @TestOnly
+    fun isAdPosition(position: Int): Boolean {
         return (position + 1) % (adInterval + 1) == 0
     }
 
-    private fun toDelegatedPosition(adapterPosition: Int): Int {
+    @TestOnly
+    fun toDelegatedPosition(adapterPosition: Int): Int {
+        if (isAdPosition(adapterPosition)) return -1
         val adsBefore = (adapterPosition + 1) / (adInterval + 1)
         return adapterPosition - adsBefore
     }

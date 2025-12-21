@@ -98,6 +98,9 @@ dependencies {
     // implementation(libs.adapter.wortise)
 
     testImplementation(libs.junit)
+    testImplementation(platform(libs.kotestBom))
+    testImplementation(libs.kotestRunner)
+    testImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     debugImplementation(libs.leakcanary)
