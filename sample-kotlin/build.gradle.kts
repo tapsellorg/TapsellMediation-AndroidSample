@@ -76,6 +76,8 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.kotlin.reflect)
     implementation(libs.coil)
+    implementation(libs.timber)
+    implementation(libs.viewbinding)
     implementation(libs.google.appset)
     implementation(libs.google.ads.identifier)
     implementation(project(":shared"))
@@ -96,6 +98,9 @@ dependencies {
     // implementation(libs.adapter.wortise)
 
     testImplementation(libs.junit)
+    testImplementation(platform(libs.kotestBom))
+    testImplementation(libs.kotestRunner)
+    testImplementation(libs.mockk)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
     debugImplementation(libs.leakcanary)

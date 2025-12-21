@@ -59,10 +59,15 @@ ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+timber = "com.jakewharton.timber:timber:5.0.1"
+viewbinding = "com.wada811.viewbindingktx:viewbindingktx:4.0.0"
 
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
+kotestBom = "io.kotest:kotest-bom:5.9.1"
+kotestRunner = { module = "io.kotest:kotest-runner-junit5" }
+mockk = "io.mockk:mockk:1.13.7"
 
 androidGradlePlugin = { module = "com.android.tools.build:gradle-api", version.ref = "agp" }
 
