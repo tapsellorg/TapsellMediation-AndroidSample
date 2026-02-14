@@ -1,7 +1,7 @@
 pluginManagement {
     repositories {
-        google()
         mavenLocal()
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
@@ -21,12 +21,6 @@ dependencyResolutionManagement {
             content { includeGroupByRegex("com.mbridge.*") }
         }
 
-        // IronSource ads
-        maven {
-            url = uri("https://android-sdk.is.com")
-            content { includeGroupByRegex("com.ironsource.*") }
-        }
-
         // ChartBoost ads
         maven {
             url = uri("https://cboost.jfrog.io/artifactory/chartboost-mediation")
@@ -36,16 +30,18 @@ dependencyResolutionManagement {
             url = uri("https://cboost.jfrog.io/artifactory/chartboost-ads")
             content { includeGroup("com.chartboost") }
         }
+        maven {
+            url = uri("https://cboost.jfrog.io/artifactory/chartboost-core")
+            content { includeGroup("com.chartboost") }
+        }
 
         // Wortise ads
         maven {
             url = uri("https://maven.wortise.com/artifactory/public")
             content { includeGroupByRegex("com.wortise.*") }
         }
-        maven {
-            url = uri("https://artifact.bytedance.com/repository/pangle")
-            content { includeGroupByRegex("com.pangle.*") }
-        }
+
+        maven("https://storage.googleapis.com/download.flutter.io")
     }
 }
 
