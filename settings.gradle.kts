@@ -14,6 +14,11 @@ dependencyResolutionManagement {
         mavenCentral()
         maven("https://maven.myket.ir")
 
+        maven {
+            url = uri("https://maven.tapsell.ir")
+            content { includeGroupByRegex("ir.tapsell.*") }
+        }
+
         // Mintegral ads
         maven {
             url =
