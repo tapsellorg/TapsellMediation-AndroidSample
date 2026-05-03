@@ -9,7 +9,7 @@ jobs:
     name: mobsfscan code scanning
     steps:
     - name: Checkout the code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6.0.2
     - name: mobsfscan
       uses: MobSF/mobsfscan@main
       with:
