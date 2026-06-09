@@ -31,4 +31,10 @@
         android:layout_height="wrap_content"
         android:text="@string/standard_banner" />
 
+    <Button
+        android:id="@+id/btPreroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/preroll" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
                 .setOnClickListener(v -> startActivity(NativeBannerActivity.class));
         findViewById(R.id.btStandardBanner)
                 .setOnClickListener(v -> startActivity(StandardBannerActivity.class));
+        findViewById(R.id.btPreroll)
+                .setOnClickListener(v -> startActivity(PreRollActivity.class));
     }
 
     private void startActivity(Class<?> clazz) {

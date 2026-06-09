@@ -34,6 +34,10 @@
         <activity
             android:name=".StandardBannerActivity"
             android:label="@string/standard_banner" />
+
+        <activity
+            android:name=".PreRollActivity"
+            android:label="@string/preroll" />
     </application>
 
 </manifest>
