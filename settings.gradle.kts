@@ -12,8 +12,9 @@ dependencyResolutionManagement {
         mavenLocal()
         google()
         mavenCentral()
-        maven("https://maven.myket.ir")
         maven("https://maven.tapsell.ir")
+        // not accessible on github
+        // maven("https://maven.myket.ir")
 
         // Mintegral ads
         maven {
