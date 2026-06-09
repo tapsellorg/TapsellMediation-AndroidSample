@@ -11,7 +11,7 @@ open class BaseViewModel : ViewModel() {
     val logMessage get() = _logMessage
 
 
-    protected fun log(tag: String, message: String, error: Int = Log.DEBUG) {
+    fun log(tag: String, message: String, error: Int = Log.DEBUG) {
         if (error == Log.ERROR) Log.e(tag, message)
         else Log.d(tag, message)
         val newMessage = buildString {

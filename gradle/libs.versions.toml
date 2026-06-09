@@ -36,6 +36,7 @@ google-appset = { module = "com.google.android.gms:play-services-appset", versio
 tapsell = { module = "ir.tapsell:tapsell", version.ref = "tapsell" }
 adapter-legacy = { module = "ir.tapsell.mediation.adapter:legacy", version.ref = "tapsell" }
 adapter-legacy-ima-extension = { module = "ir.tapsell.mediation.adapter:legacy-ima-extension", version.ref = "tapsell" }
+adapter-legacy-taproll = { module = "ir.tapsell.mediation.adapter:legacy-taproll", version.ref = "tapsell" }
 adapter-admob = { module = "ir.tapsell.mediation.adapter:admob", version.ref = "tapsell" }
 adapter-unityads = { module = "ir.tapsell.mediation.adapter:unityads", version.ref = "tapsell" }
 adapter-mintegral = { module = "ir.tapsell.mediation.adapter:mintegral", version.ref = "tapsell" }

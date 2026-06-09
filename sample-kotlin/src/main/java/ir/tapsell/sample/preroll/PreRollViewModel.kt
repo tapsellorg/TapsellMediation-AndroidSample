@@ -5,9 +5,12 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import ir.tapsell.mediation.Tapsell
 import ir.tapsell.mediation.ad.AdStateListener
+import ir.tapsell.mediation.ad.PreRollAdListener
 import ir.tapsell.mediation.ad.request.RequestResultListener
 import ir.tapsell.mediation.ad.show.AdShowCompletionState
 import ir.tapsell.sample.BaseViewModel
+
+enum class Renderer { IMA, Taproll }
 
 class PreRollViewModel : BaseViewModel() {
 
@@ -16,6 +19,8 @@ class PreRollViewModel : BaseViewModel() {
     }
 
     private var preRollAds = mutableListOf<String>()
+    var vastTag: String = ""
+        private set
 
     fun requestAd(
         zoneId: String,
@@ -38,6 +43,33 @@ class PreRollViewModel : BaseViewModel() {
                 override fun onSuccess(adId: String) {
                     preRollAds.add(adId)
                     log(TAG, "onSuccess: $adId")
+                }
+            })
+    }
+
+    fun requestAdForTaproll(zoneId: String) {
+        Tapsell.requestPreRollAd(
+            zoneId,
+            object : RequestResultListener {
+                override fun onSuccess(adId: String) {
+                    preRollAds.add(adId)
+                    log(TAG, "onSuccess: $adId")
+                    Tapsell.getPreRollVastUrl(
+                        adId,
+                        object : PreRollAdListener {
+                            override fun onVastAvailable(value: String) {
+                                vastTag = value
+                                log(TAG, "vastTag received: $value")
+                            }
+
+                            override fun onAdFailed(message: String) {
+                                log(TAG, "getPreRollVastUrl onFailure: $message", Log.ERROR)
+                            }
+                        })
+                }
+
+                override fun onFailure(message: String) {
+                    log(TAG, "onFailure: $message", Log.ERROR)
                 }
             })
     }

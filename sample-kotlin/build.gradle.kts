@@ -83,6 +83,7 @@ dependencies {
     implementation(libs.tapsell)
     implementation(libs.adapter.legacy)
     implementation(libs.adapter.legacy.ima.extension)
+    implementation(libs.adapter.legacy.taproll)
     implementation(libs.adapter.admob)
     implementation(libs.adapter.unityads)
     implementation(libs.adapter.fyber)

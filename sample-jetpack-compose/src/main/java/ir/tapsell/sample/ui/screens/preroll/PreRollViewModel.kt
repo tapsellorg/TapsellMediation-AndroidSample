@@ -8,12 +8,15 @@ import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import ir.tapsell.mediation.Tapsell
 import ir.tapsell.mediation.ad.AdStateListener
+import ir.tapsell.mediation.ad.PreRollAdListener
 import ir.tapsell.mediation.ad.request.RequestResultListener
 import ir.tapsell.mediation.ad.show.AdShowCompletionState
 import ir.tapsell.sample.base.BaseViewModel
 import ir.tapsell.sample.model.PreRollContainer
 import ir.tapsell.shared.SampleVideosUrl
 import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys
+
+enum class Renderer { IMA, Taproll }
 
 class PreRollViewModel : BaseViewModel() {
 
@@ -22,6 +25,9 @@ class PreRollViewModel : BaseViewModel() {
     private var preRollAds = mutableListOf<String>()
     var isShowButtonEnabled = mutableStateOf(false)
     var adViewContainer = mutableStateOf<PreRollContainer?>(null)
+    var renderer = mutableStateOf(Renderer.IMA)
+    var vastTag: String = ""
+        private set
 
     fun requestAd(exoplayer: ExoPlayer) {
         addLog("requestAd")
@@ -47,6 +53,36 @@ class PreRollViewModel : BaseViewModel() {
                     }
                 })
         } ?: addLog("AdViewContainer is null")
+    }
+
+    fun requestAdForTaproll() {
+        addLog("requestAdForTaproll")
+        Tapsell.requestPreRollAd(
+            TapsellMediationKeys.preRoll,
+            object : RequestResultListener {
+                override fun onSuccess(adId: String) {
+                    preRollAds.add(adId)
+                    isShowButtonEnabled.value = true
+                    log(TAG, "onSuccess: $adId")
+                    Tapsell.getPreRollVastUrl(
+                        adId,
+                        object : PreRollAdListener {
+                            override fun onVastAvailable(value: String) {
+                                vastTag = value
+                                log(TAG, "vastTag received: $value")
+                            }
+
+                            override fun onAdFailed(message: String) {
+                                log(TAG, "getPreRollVastUrl onFailure: $message", Log.ERROR)
+                            }
+                        })
+                }
+
+                override fun onFailure(message: String) {
+                    addLog("onFailure: $message")
+                    isShowButtonEnabled.value = false
+                }
+            })
     }
 
     fun showVideo() {
