@@ -12,6 +12,7 @@ import ir.tapsell.mediation.ad.request.RequestResultListener
 import ir.tapsell.mediation.ad.show.AdShowCompletionState
 import ir.tapsell.sample.base.BaseViewModel
 import ir.tapsell.sample.model.PreRollContainer
+import ir.tapsell.shared.SampleVideosUrl
 import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys
 
 class PreRollViewModel : BaseViewModel() {
@@ -31,8 +32,8 @@ class PreRollViewModel : BaseViewModel() {
                 adContainer.player,
                 adContainer.companion,
                 adContainer.playerView,
-                SAMPLE_VIDEO_URL,
-                object: RequestResultListener {
+                SampleVideosUrl.random(),
+                object : RequestResultListener {
 
                     override fun onSuccess(adId: String) {
                         preRollAds.add(adId)
@@ -111,18 +112,9 @@ class PreRollViewModel : BaseViewModel() {
 
     companion object {
         private const val TAG = "PreRollViewModel"
-        private const val SAMPLE_VIDEO_URL =
-            "https://storage.backtory.com/tapsell-server/sdk/VASTContentVideo.mp4"
     }
 }
 
-val SAMPLE_VIDEO_URLS = listOf(
-    "https://storage.backtory.com/tapsell-server/sdk/VASTContentVideo.mp4",
-    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-    "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-)
 
 val ExoPlayer.playerDefaultListener
     get() = object : Player.Listener {
@@ -134,7 +126,7 @@ val ExoPlayer.playerDefaultListener
 
                 Player.STATE_ENDED -> {
                     Log.d("ExoPlayer", "onPlaybackStateChanged: STATE_ENDED")
-                    playNextVideo(SAMPLE_VIDEO_URLS.shuffled().random())
+                    playNextVideo(SampleVideosUrl.random())
                 }
 
                 else -> {}
@@ -152,4 +144,3 @@ fun ExoPlayer.restartPlayer() {
     seekTo(0)
     playWhenReady = true
 }
-

@@ -15,6 +15,7 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import ir.tapsell.sample.databinding.FragmentPrerollBinding
 import ir.tapsell.sample.utils.addChip
+import ir.tapsell.shared.SampleVideosUrl
 import ir.tapsell.shared.TapsellKeys
 import ir.tapsell.shared.TapsellPreRollAdNetworks
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +31,7 @@ class PreRollFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = FragmentPrerollBinding.inflate(inflater, container, false)
         return _binding?.root
@@ -69,7 +70,7 @@ class PreRollFragment : Fragment() {
             container = binding.videoPlayerContainer,
             companionContainer = binding.companionContainer, // optional
             videoPlayer = binding.exoPlayer,
-            videoPath = SAMPLE_VIDEO_URL,
+            videoPath = SampleVideosUrl.random(),
         )
     }
 
@@ -98,7 +99,7 @@ class PreRollFragment : Fragment() {
                 Player.STATE_READY -> Log.d(TAG, "onPlaybackStateChanged: STATE_READY")
                 Player.STATE_ENDED -> {
                     Log.d(TAG, "onPlaybackStateChanged: STATE_ENDED")
-                    playNextVideo(SAMPLE_VIDEO_URLS.shuffled().random())
+                    playNextVideo(SampleVideosUrl.random())
                 }
 
                 else -> {}
@@ -147,15 +148,5 @@ class PreRollFragment : Fragment() {
 
     companion object {
         private const val TAG = "PreRollFragment"
-        private const val SAMPLE_VIDEO_URL =
-            "https://storage.backtory.com/tapsell-server/sdk/VASTContentVideo.mp4"
-
-        private val SAMPLE_VIDEO_URLS = listOf(
-            SAMPLE_VIDEO_URL,
-            "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-            "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
-            "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
-            "https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-        )
     }
 }
