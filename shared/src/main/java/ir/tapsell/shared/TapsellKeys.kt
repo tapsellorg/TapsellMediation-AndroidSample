@@ -69,7 +69,7 @@ sealed interface TapsellKeys : TapsellAdTypes {
         private const val NATIVE_BANNER = "b1b92bca-8a54-4b82-9f53-90ea2b1a912c"
         private const val NATIVE_VIDEO = "236e51ac-4fed-4263-b50a-7240558c73cb"
         private const val BANNER = "4bf4e11d-0967-41e6-91f6-a128d9462f2a"
-        private const val PRE_ROLL = "628f60d7-8fd0-4aea-a840-2d2947121dd5"
+        private const val PRE_ROLL = "ca7355fa-2b59-436f-9f73-70b408d54b6a"
     }
 
     data object AdmobKeys : TapsellKeys {
