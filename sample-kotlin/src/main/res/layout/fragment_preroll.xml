@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".preroll.PreRollFragment">
+    android:layout_height="match_parent">
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_adNetworks"
@@ -41,52 +39,55 @@
 
     </RadioGroup>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_request"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input_zone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:hint="@string/zone_id"
+        android:textSize="@dimen/h6"
+        app:layout_constraintTop_toBottomOf="@id/renderer_selector" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/request"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/renderer_selector" />
+        app:layout_constraintEnd_toStartOf="@id/btn_show"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_zone" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_show"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="@string/show"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/btn_request" />
+        app:layout_constraintBaseline_toBaselineOf="@id/btn_request"
+        app:layout_constraintEnd_toStartOf="@id/btn_replay"
+        app:layout_constraintStart_toEndOf="@id/btn_request" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_replay"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="@string/replay_video"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/btn_show" />
+        app:layout_constraintBaseline_toBaselineOf="@id/btn_request"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_show" />
 
     <LinearLayout
         android:id="@+id/preroll_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/btn_replay">
+        app:layout_constraintTop_toBottomOf="@+id/btn_request">
 
         <RelativeLayout
             android:id="@+id/video_player_container"
             android:layout_width="match_parent"
             android:layout_height="200dp">
-
 
             <androidx.media3.ui.PlayerView
                 android:id="@+id/exo_player"
@@ -109,21 +110,7 @@
         android:id="@+id/tv_log"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="12dp"
-        app:layout_constraintBottom_toTopOf="@id/input_zone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_min="100dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/preroll_container" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/input_zone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/zone_id"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="@dimen/h6"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

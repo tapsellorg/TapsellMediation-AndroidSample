@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/space_small"
-    tools:context=".native.NativeFragment">
-
-    <FrameLayout
-        android:id="@+id/native_banner_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:padding="@dimen/space_small">
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_adNetworks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/native_banner_container"
+        app:layout_constraintTop_toTopOf="parent"
         app:selectionRequired="true"
         app:singleSelection="true" />
 
@@ -45,55 +36,63 @@
             android:checked="false" />
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_request"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="8dp"
-        android:text="@string/request"
-        app:layout_constraintTop_toBottomOf="@id/ly_switch_native_type" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_request_multiple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/request_multiple"
-        app:layout_constraintBottom_toTopOf="@+id/btn_show"
-        app:layout_constraintTop_toBottomOf="@+id/btn_request" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_show"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/show"
-        app:layout_constraintTop_toBottomOf="@+id/btn_request_multiple" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_destroy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/destroy"
-        app:layout_constraintTop_toBottomOf="@+id/btn_show" />
-
-    <ir.tapsell.shared.ConsoleView
-        android:id="@+id/tv_log"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/input_zone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_min="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_destroy" />
-
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/input_zone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/zone_id"
-        android:textColor="@android:color/darker_gray"
         android:textSize="@dimen/h6"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/ly_switch_native_type" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_request"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/request"
+        app:layout_constraintEnd_toStartOf="@id/btn_show"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_zone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show"
+        app:layout_constraintBaseline_toBaselineOf="@id/btn_request"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_request" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_request_multiple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/request_multiple"
+        app:layout_constraintEnd_toStartOf="@id/btn_destroy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_request" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_destroy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/destroy"
+        app:layout_constraintBaseline_toBaselineOf="@id/btn_request_multiple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_request_multiple" />
+
+    <FrameLayout
+        android:id="@+id/native_banner_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_request_multiple" />
+
+    <ir.tapsell.shared.ConsoleView
+        android:id="@+id/tv_log"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/native_banner_container" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
