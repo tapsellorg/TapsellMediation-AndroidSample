@@ -8,9 +8,11 @@
     tools:context=".appopen.AppOpenFragment">
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_adNetworks"
+        android:id="@+id/zones_chips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:chipSpacingHorizontal="8dp"
+        app:chipSpacingVertical="8dp"
         app:layout_constraintTop_toTopOf="parent"
         app:selectionRequired="true"
         app:singleSelection="true" />

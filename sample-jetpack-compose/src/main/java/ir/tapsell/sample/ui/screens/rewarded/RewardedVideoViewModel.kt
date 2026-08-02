@@ -11,7 +11,8 @@ import ir.tapsell.mediation.ad.AdStateListener
 import ir.tapsell.mediation.ad.request.RequestResultListener
 import ir.tapsell.mediation.ad.show.AdShowCompletionState
 import ir.tapsell.sample.base.BaseViewModel
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys
+import ir.tapsell.shared.TapsellKeyProvider
+import ir.tapsell.shared.ZoneType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -27,7 +28,7 @@ class RewardedVideoViewModel : BaseViewModel() {
 
     fun requestAd() {
         Tapsell.requestRewardedAd(
-            TapsellMediationKeys.rewarded, object : RequestResultListener {
+            TapsellKeyProvider.zonesFor(ZoneType.REWARDED).first().id, object : RequestResultListener {
                 override fun onFailure(message: String) {
                     log(TAG, "onFailure: $message", Log.ERROR)
                 }

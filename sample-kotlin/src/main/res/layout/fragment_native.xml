@@ -7,34 +7,14 @@
     android:padding="@dimen/space_small">
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_adNetworks"
+        android:id="@+id/zones_chips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:chipSpacingHorizontal="8dp"
+        app:chipSpacingVertical="8dp"
         app:layout_constraintTop_toTopOf="parent"
         app:selectionRequired="true"
         app:singleSelection="true" />
-
-    <LinearLayout
-        android:id="@+id/ly_switch_native_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chip_adNetworks">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_switch_native_video"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/h5"
-            android:text="@string/native_video" />
-
-        <com.google.android.material.materialswitch.MaterialSwitch
-            android:id="@+id/switch_native_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false" />
-    </LinearLayout>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/input_zone"
@@ -42,7 +22,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/zone_id"
         android:textSize="@dimen/h6"
-        app:layout_constraintTop_toBottomOf="@id/ly_switch_native_type" />
+        app:layout_constraintTop_toBottomOf="@id/zones_chips" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_request"

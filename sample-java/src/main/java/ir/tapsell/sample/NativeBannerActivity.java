@@ -14,7 +14,8 @@ import ir.tapsell.mediation.ad.request.RequestResultListener;
 import ir.tapsell.mediation.ad.show.AdShowCompletionState;
 import ir.tapsell.mediation.ad.views.ntv.NativeAdViewContainer;
 import ir.tapsell.shared.ConsoleView;
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys;
+import ir.tapsell.shared.TapsellKeyProvider;
+import ir.tapsell.shared.ZoneType;
 
 public class NativeBannerActivity extends AppCompatActivity {
 
@@ -53,7 +54,7 @@ public class NativeBannerActivity extends AppCompatActivity {
 
     private void requestAd() {
         Tapsell.requestNativeAd(
-                TapsellMediationKeys.INSTANCE.getNative(),
+                TapsellKeyProvider.zonesFor(ZoneType.NATIVE).get(0).getId(),
                 new RequestResultListener() {
                     @Override
                     public void onSuccess(@NonNull String adId) {

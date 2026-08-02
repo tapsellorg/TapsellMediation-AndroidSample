@@ -7,10 +7,12 @@
     android:padding="@dimen/space_small">
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_adNetworks"
+        android:id="@+id/zones_chips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        app:chipSpacingHorizontal="8dp"
+        app:chipSpacingVertical="8dp"
         app:selectionRequired="true"
         app:singleSelection="true" />
 
@@ -20,7 +22,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/zone_id"
         android:textSize="@dimen/h6"
-        app:layout_constraintTop_toBottomOf="@id/chip_adNetworks" />
+        app:layout_constraintTop_toBottomOf="@id/zones_chips" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_request"

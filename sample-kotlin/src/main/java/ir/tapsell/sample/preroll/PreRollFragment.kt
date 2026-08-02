@@ -20,8 +20,8 @@ import ir.tapsell.sample.R
 import ir.tapsell.sample.databinding.FragmentPrerollBinding
 import ir.tapsell.sample.utils.addChip
 import ir.tapsell.shared.SampleVideosUrl
-import ir.tapsell.shared.TapsellKeys
-import ir.tapsell.shared.TapsellPreRollAdNetworks
+import ir.tapsell.shared.TapsellKeyProvider
+import ir.tapsell.shared.ZoneType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -47,12 +47,13 @@ class PreRollFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        TapsellPreRollAdNetworks.map { adNetwork ->
-            binding.chipAdNetworks.addChip(requireContext(), adNetwork.name) {
-                binding.inputZone.setText(adNetwork.preRoll)
+        val zones = TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL)
+        zones.forEachIndexed { index, zone ->
+            binding.zonesChips.addChip(requireContext(), zone.name, checked = index == 0) {
+                binding.inputZone.setText(zone.id)
             }
         }
-        binding.inputZone.setText(TapsellKeys.TapsellMediationKeys.preRoll)
+        binding.inputZone.setText(zones.firstOrNull()?.id)
 
         binding.rendererSelector.setOnCheckedChangeListener { _, checkedId ->
             renderer = when (checkedId) {

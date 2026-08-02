@@ -29,7 +29,8 @@ import ir.tapsell.mediation.ad.show.AdShowCompletionState;
 import ir.tapsell.mediation.taproll.exo.TaprollAdLoader;
 import ir.tapsell.shared.ConsoleView;
 import ir.tapsell.shared.SampleVideosKt;
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys;
+import ir.tapsell.shared.TapsellKeyProvider;
+import ir.tapsell.shared.ZoneType;
 
 @OptIn(markerClass = UnstableApi.class)
 public class PreRollActivity extends AppCompatActivity {
@@ -107,7 +108,7 @@ public class PreRollActivity extends AppCompatActivity {
 
     private void requestAdForIma() {
         Tapsell.requestPreRollAd(
-                TapsellMediationKeys.INSTANCE.getPreRoll(),
+                TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL).get(0).getId(),
                 videoPlayerContainer,
                 companionContainer,
                 playerView,
@@ -131,7 +132,7 @@ public class PreRollActivity extends AppCompatActivity {
 
     private void requestAdForTaproll() {
         Tapsell.requestPreRollAd(
-                TapsellMediationKeys.INSTANCE.getPreRoll(),
+                TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL).get(0).getId(),
                 new RequestResultListener() {
                     @Override
                     public void onSuccess(@NonNull String adId) {

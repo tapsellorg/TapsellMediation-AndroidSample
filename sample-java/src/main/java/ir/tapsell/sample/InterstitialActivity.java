@@ -12,7 +12,8 @@ import ir.tapsell.mediation.ad.AdStateListener;
 import ir.tapsell.mediation.ad.request.RequestResultListener;
 import ir.tapsell.mediation.ad.show.AdShowCompletionState;
 import ir.tapsell.shared.ConsoleView;
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys;
+import ir.tapsell.shared.TapsellKeyProvider;
+import ir.tapsell.shared.ZoneType;
 
 public class InterstitialActivity extends AppCompatActivity {
     private static final String TAG = "RewardActivity";
@@ -38,7 +39,7 @@ public class InterstitialActivity extends AppCompatActivity {
 
     private void requestAd() {
         Tapsell.requestInterstitialAd(
-                TapsellMediationKeys.INSTANCE.getInterstitial(),
+                TapsellKeyProvider.zonesFor(ZoneType.INTERSTITIAL).get(0).getId(),
                 new RequestResultListener() {
                     @Override
                     public void onSuccess(@NonNull String adId) {

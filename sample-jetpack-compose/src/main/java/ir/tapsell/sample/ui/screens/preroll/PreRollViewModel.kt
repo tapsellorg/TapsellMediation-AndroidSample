@@ -14,7 +14,8 @@ import ir.tapsell.mediation.ad.show.AdShowCompletionState
 import ir.tapsell.sample.base.BaseViewModel
 import ir.tapsell.sample.model.PreRollContainer
 import ir.tapsell.shared.SampleVideosUrl
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys
+import ir.tapsell.shared.TapsellKeyProvider
+import ir.tapsell.shared.ZoneType
 
 enum class Renderer { IMA, Taproll }
 
@@ -34,7 +35,7 @@ class PreRollViewModel : BaseViewModel() {
         adViewContainer.value?.let { adContainer ->
             adContainer.playerView.player = exoplayer
             Tapsell.requestPreRollAd(
-                TapsellMediationKeys.preRoll,
+                TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL).first().id,
                 adContainer.player,
                 adContainer.companion,
                 adContainer.playerView,
@@ -58,7 +59,7 @@ class PreRollViewModel : BaseViewModel() {
     fun requestAdForTaproll() {
         addLog("requestAdForTaproll")
         Tapsell.requestPreRollAd(
-            TapsellMediationKeys.preRoll,
+            TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL).first().id,
             object : RequestResultListener {
                 override fun onSuccess(adId: String) {
                     preRollAds.add(adId)

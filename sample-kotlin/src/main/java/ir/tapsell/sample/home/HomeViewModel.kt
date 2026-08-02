@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModel
 import com.google.android.material.snackbar.Snackbar
 import ir.tapsell.mediation.Tapsell
 import ir.tapsell.sample.R
-import ir.tapsell.shared.TapsellManifestKeys
 
 class HomeViewModel : ViewModel() {
 
@@ -50,8 +49,8 @@ class HomeViewModel : ViewModel() {
             PackageManager.GET_META_DATA
         ).metaData?.let { manifest ->
             return arrayOf(
-                manifest.getString(TapsellManifestKeys.TAPSELL_APP_ID),
-                manifest.getString(TapsellManifestKeys.ADMOB_APP_ID),
+                manifest.getString("ir.tapsell.mediation.APPLICATION_KEY"),
+                manifest.getString("com.google.android.gms.ads.APPLICATION_ID"),
             )
         }
         return emptyArray()

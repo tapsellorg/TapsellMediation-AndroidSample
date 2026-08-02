@@ -14,7 +14,8 @@ import ir.tapsell.mediation.ad.request.BannerSize;
 import ir.tapsell.mediation.ad.request.RequestResultListener;
 import ir.tapsell.mediation.ad.views.banner.BannerContainer;
 import ir.tapsell.shared.ConsoleView;
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys;
+import ir.tapsell.shared.TapsellKeyProvider;
+import ir.tapsell.shared.ZoneType;
 
 public class StandardBannerActivity extends AppCompatActivity {
 
@@ -53,7 +54,7 @@ public class StandardBannerActivity extends AppCompatActivity {
 
     private void requestAd() {
         Tapsell.requestBannerAd(
-                TapsellMediationKeys.INSTANCE.getBanner(),
+                TapsellKeyProvider.zonesFor(ZoneType.BANNER).get(0).getId(),
                 BannerSize.BANNER_300_250,
                 new RequestResultListener() {
                     @Override

@@ -11,7 +11,9 @@ import ir.tapsell.mediation.ad.views.ntv.NativeAdView
 import ir.tapsell.mediation.ad.views.ntv.NativeAdViewContainer
 import ir.tapsell.sample.BaseViewModel
 import ir.tapsell.sample.R
-import ir.tapsell.shared.TapsellKeys
+import ir.tapsell.shared.TapsellKeyProvider
+import ir.tapsell.shared.ZoneType
+import ir.tapsell.shared.Zone
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -26,8 +28,6 @@ class NativeViewModel : BaseViewModel() {
         private set
     var shownIds = hashSetOf<String>()
         private set
-
-    val selectedAdNetwork = MutableStateFlow<TapsellKeys>(TapsellKeys.TapsellMediationKeys)
 
     override fun onCleared() {
         super.onCleared()
@@ -87,10 +87,6 @@ class NativeViewModel : BaseViewModel() {
                     }
                 })
         }
-    }
-
-    fun updateSelectedAdNetwork(adNetwork: TapsellKeys) = viewModelScope.launch {
-        selectedAdNetwork.update { adNetwork }
     }
 
     fun destroyAd() {

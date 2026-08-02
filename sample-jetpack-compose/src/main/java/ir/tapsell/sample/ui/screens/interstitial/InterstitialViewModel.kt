@@ -10,7 +10,8 @@ import ir.tapsell.mediation.ad.AdStateListener
 import ir.tapsell.mediation.ad.request.RequestResultListener
 import ir.tapsell.mediation.ad.show.AdShowCompletionState
 import ir.tapsell.sample.base.BaseViewModel
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys
+import ir.tapsell.shared.TapsellKeyProvider
+import ir.tapsell.shared.ZoneType
 
 
 class InterstitialViewModel : BaseViewModel() {
@@ -25,7 +26,7 @@ class InterstitialViewModel : BaseViewModel() {
 
     fun requestAd() {
         Tapsell.requestInterstitialAd(
-            TapsellMediationKeys.interstitial,
+            TapsellKeyProvider.zonesFor(ZoneType.INTERSTITIAL).first().id,
             object : RequestResultListener {
                 override fun onFailure(message: String) {
                     log(TAG, "onFailure: $message", Log.ERROR)

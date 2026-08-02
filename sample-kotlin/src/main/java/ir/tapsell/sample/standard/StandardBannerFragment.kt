@@ -13,8 +13,8 @@ import ir.tapsell.mediation.ad.request.BannerSize
 import ir.tapsell.mediation.ad.views.banner.BannerContainer
 import ir.tapsell.sample.databinding.FragmentStandardBannerBinding
 import ir.tapsell.sample.utils.addChip
-import ir.tapsell.shared.TapsellAdNetworks
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys
+import ir.tapsell.shared.TapsellKeyProvider
+import ir.tapsell.shared.ZoneType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -35,9 +35,10 @@ class StandardBannerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        TapsellAdNetworks.map { adNetwork ->
-            binding.chipAdNetworks.addChip(requireContext(), adNetwork.name) {
-                binding.inputZone.setText(adNetwork.banner)
+        val zones = TapsellKeyProvider.zonesFor(ZoneType.BANNER)
+        zones.forEachIndexed { index, zone ->
+            binding.zonesChips.addChip(requireContext(), zone.name, checked = index == 0) {
+                binding.inputZone.setText(zone.id)
             }
         }
         binding.spinnerBannerSizes.apply {
@@ -49,7 +50,7 @@ class StandardBannerFragment : Fragment() {
             onItemSelectedListener = viewModel.spinnerItemSelectedListener
             setSelection(BannerSize.valueOf(BannerSize.BANNER_300_250.name).ordinal)
         }
-        binding.inputZone.setText(TapsellMediationKeys.banner)
+        binding.inputZone.setText(zones.firstOrNull()?.id)
         binding.btnRequest.setOnClickListener {
             requestAd()
         }

@@ -12,9 +12,8 @@ import ir.tapsell.sample.R
 import ir.tapsell.sample.databinding.FragmentNativeBinding
 import ir.tapsell.sample.utils.addChip
 import ir.tapsell.shared.MULTIPLE_NATIVE_REQUESTS_COUNT
-import ir.tapsell.shared.TapsellKeys
-import ir.tapsell.shared.TapsellKeys.TapsellMediationKeys
-import ir.tapsell.shared.TapsellNativeAdNetworks
+import ir.tapsell.shared.TapsellKeyProvider
+import ir.tapsell.shared.ZoneType
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -36,24 +35,13 @@ class NativeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        TapsellNativeAdNetworks.map { adNetwork ->
-            binding.chipAdNetworks.addChip(requireContext(), adNetwork.name) {
-                viewModel.updateSelectedAdNetwork(adNetwork)
+        val zones = TapsellKeyProvider.zonesFor(ZoneType.NATIVE)
+        zones.forEachIndexed { index, zone ->
+            binding.zonesChips.addChip(requireContext(), zone.name, checked = index == 0) {
+                binding.inputZone.setText(zone.id)
             }
         }
-
-        lifecycleScope.launch {
-            viewModel.selectedAdNetwork.collect { adNetwork ->
-                updateZoneInput(adNetwork, binding.switchNativeType.isChecked)
-                binding.switchNativeType.setOnCheckedChangeListener { _, isChecked ->
-                    updateZoneInput(adNetwork, isChecked)
-                }
-            }
-        }
-
-        binding.tvSwitchNativeVideo.setOnClickListener {
-            binding.switchNativeType.isChecked = binding.switchNativeType.isChecked.not()
-        }
+        binding.inputZone.setText(zones.firstOrNull()?.id)
 
         binding.btnRequest.setOnClickListener {
             requestAd()
@@ -73,17 +61,6 @@ class NativeFragment : Fragment() {
                 binding.tvLog.text = it
             }
         }
-    }
-
-    private fun updateZoneInput(adNetwork: TapsellKeys, isNativeVideo: Boolean = false) {
-        if (isNativeVideo) {
-            // Native video is only available for `TapsellMediationKeys` and `LegacyKeys`
-            when (adNetwork) {
-                is TapsellMediationKeys -> binding.inputZone.setText(adNetwork.nativeVideo)
-                is TapsellKeys.LegacyKeys -> binding.inputZone.setText(adNetwork.nativeVideo)
-                else -> binding.inputZone.setText(adNetwork.native)
-            }
-        } else binding.inputZone.setText(adNetwork.native)
     }
 
     private fun requestAd(count: Int = 1) {
