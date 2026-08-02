@@ -54,7 +54,7 @@ public class StandardBannerActivity extends AppCompatActivity {
 
     private void requestAd() {
         Tapsell.requestBannerAd(
-                TapsellKeyProvider.zonesFor(ZoneType.BANNER).get(0).getId(),
+                TapsellKeyProvider.zonesFor(this, ZoneType.BANNER).get(0).getId(),
                 BannerSize.BANNER_300_250,
                 new RequestResultListener() {
                     @Override

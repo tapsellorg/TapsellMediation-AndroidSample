@@ -54,7 +54,7 @@ public class NativeBannerActivity extends AppCompatActivity {
 
     private void requestAd() {
         Tapsell.requestNativeAd(
-                TapsellKeyProvider.zonesFor(ZoneType.NATIVE).get(0).getId(),
+                TapsellKeyProvider.zonesFor(this, ZoneType.NATIVE).get(0).getId(),
                 new RequestResultListener() {
                     @Override
                     public void onSuccess(@NonNull String adId) {

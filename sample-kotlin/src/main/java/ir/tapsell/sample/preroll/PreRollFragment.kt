@@ -47,7 +47,7 @@ class PreRollFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val zones = TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL)
+        val zones = TapsellKeyProvider.zonesFor(requireContext(), ZoneType.PRE_ROLL)
         zones.forEachIndexed { index, zone ->
             binding.zonesChips.addChip(requireContext(), zone.name, checked = index == 0) {
                 binding.inputZone.setText(zone.id)

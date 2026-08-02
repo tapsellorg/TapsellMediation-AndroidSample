@@ -1,6 +1,7 @@
 package ir.tapsell.sample.ui.screens.standard
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -28,9 +29,9 @@ class StandardBannerViewModel : BaseViewModel() {
         private const val TAG = "StandardBannerViewModel"
     }
 
-    fun requestAd() {
+    fun requestAd(context: Context) {
         Tapsell.requestBannerAd(
-            TapsellKeyProvider.zonesFor(ZoneType.BANNER).first().id, bannerSize,
+            TapsellKeyProvider.zonesFor(context, ZoneType.BANNER).first().id, bannerSize,
             object : RequestResultListener {
                 override fun onFailure(message: String) {
                     log(TAG, "onFailure: $message", Log.ERROR)

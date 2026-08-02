@@ -15,6 +15,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -29,6 +30,7 @@ fun InterstitialScreen(
     viewModel: InterstitialViewModel = viewModel()
 ) {
     val activity = LocalActivity.current
+    val context = LocalContext.current
     val logMessage by viewModel.logMessage.collectAsState()
 
     Scaffold(
@@ -51,7 +53,7 @@ fun InterstitialScreen(
 
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = (viewModel::requestAd)
+                onClick = { viewModel.requestAd(context) }
             ) {
                 Text(text = stringResource(ShR.string.request))
             }

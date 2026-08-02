@@ -39,7 +39,7 @@ public class InterstitialActivity extends AppCompatActivity {
 
     private void requestAd() {
         Tapsell.requestInterstitialAd(
-                TapsellKeyProvider.zonesFor(ZoneType.INTERSTITIAL).get(0).getId(),
+                TapsellKeyProvider.zonesFor(this, ZoneType.INTERSTITIAL).get(0).getId(),
                 new RequestResultListener() {
                     @Override
                     public void onSuccess(@NonNull String adId) {

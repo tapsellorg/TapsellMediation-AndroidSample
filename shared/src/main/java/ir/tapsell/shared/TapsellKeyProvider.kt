@@ -1,5 +1,9 @@
 package ir.tapsell.shared
 
+import android.content.Context
+import android.util.Log
+import org.json.JSONObject
+
 data class Zone(
     val name: String,
     val type: ZoneType,
@@ -101,7 +105,9 @@ private val YandexKeys = listOf(
 
 object TapsellKeyProvider {
 
-    private val allNetworks = listOf(
+    private const val ZONES_FILE_NAME = "tapsell.json"
+
+    private val hardcodedZones = listOf(
         TapsellMediationKeys,
         LegacyKeys,
         AdmobKeys,
@@ -113,9 +119,45 @@ object TapsellKeyProvider {
         ChartBoostKeys,
         WortiseKeys,
         YandexKeys,
-    )
+    ).flatten()
+
+    private var cachedZones: List<Zone>? = null
+    private var zonesLoaded = false
 
     @JvmStatic
-    fun zonesFor(type: ZoneType): List<Zone> =
-        allNetworks.flatMap { network -> network.filter { it.type == type } }
+    fun zonesFor(context: Context, type: ZoneType): List<Zone> {
+        if (!zonesLoaded) {
+            cachedZones = readFromJson(context)
+            zonesLoaded = true
+        }
+        return cachedZones?.filter { it.type == type }
+            ?: hardcodedZones.filter { it.type == type }
+    }
+
+    private fun readFromJson(context: Context): List<Zone>? {
+        return try {
+            val json = context.assets.open(ZONES_FILE_NAME)
+                .bufferedReader()
+                .use { it.readText() }
+            val root = JSONObject(json)
+            val arr = root.optJSONArray("zones") ?: return emptyList()
+            buildList {
+                for (i in 0 until arr.length()) {
+                    val obj = arr.optJSONObject(i) ?: continue
+                    val typeStr = obj.optString("type").uppercase().trim()
+                    val type = runCatching { ZoneType.valueOf(typeStr) }.getOrNull()
+                    val name = obj.optString("name").trim()
+                        .split(" ").filterNot { it.contentEquals(typeStr, ignoreCase = true) }
+                        .joinToString(" ")
+                    val id = obj.optString("id").trim()
+                    if (name.isNotBlank() && id.isNotBlank() && type != null) {
+                        add(Zone(name, type, id))
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            Log.i("TapsellKeyProvider", "Cannot read $ZONES_FILE_NAME; using hardcoded zone ids", e)
+            null
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package ir.tapsell.sample.ui.screens.rewarded
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,9 +27,9 @@ class RewardedVideoViewModel : BaseViewModel() {
         private const val TAG = "RewardedVideoViewModel"
     }
 
-    fun requestAd() {
+    fun requestAd(context: Context) {
         Tapsell.requestRewardedAd(
-            TapsellKeyProvider.zonesFor(ZoneType.REWARDED).first().id, object : RequestResultListener {
+            TapsellKeyProvider.zonesFor(context, ZoneType.REWARDED).first().id, object : RequestResultListener {
                 override fun onFailure(message: String) {
                     log(TAG, "onFailure: $message", Log.ERROR)
                 }

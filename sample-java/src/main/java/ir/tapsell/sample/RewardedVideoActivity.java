@@ -41,7 +41,7 @@ public class RewardedVideoActivity extends AppCompatActivity {
     private void requestAd() {
 
         Tapsell.requestRewardedAd(
-                TapsellKeyProvider.zonesFor(ZoneType.REWARDED).get(0).getId(),
+                TapsellKeyProvider.zonesFor(this, ZoneType.REWARDED).get(0).getId(),
                 new RequestResultListener() {
                     @Override
                     public void onSuccess(@NonNull String adId) {

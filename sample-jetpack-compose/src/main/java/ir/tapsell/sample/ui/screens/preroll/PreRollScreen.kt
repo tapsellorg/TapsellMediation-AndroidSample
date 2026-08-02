@@ -149,8 +149,8 @@ fun PreRollScreen(
                 modifier = Modifier.fillMaxWidth(BUTTON_WIDTH),
                 onClick = {
                     when (viewModel.renderer.value) {
-                        Renderer.IMA -> viewModel.requestAd(exoplayer)
-                        Renderer.Taproll -> viewModel.requestAdForTaproll()
+                        Renderer.IMA -> viewModel.requestAd(context, exoplayer)
+                        Renderer.Taproll -> viewModel.requestAdForTaproll(context)
                     }
                 }
             ) {

@@ -108,7 +108,7 @@ public class PreRollActivity extends AppCompatActivity {
 
     private void requestAdForIma() {
         Tapsell.requestPreRollAd(
-                TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL).get(0).getId(),
+                TapsellKeyProvider.zonesFor(this, ZoneType.PRE_ROLL).get(0).getId(),
                 videoPlayerContainer,
                 companionContainer,
                 playerView,
@@ -132,7 +132,7 @@ public class PreRollActivity extends AppCompatActivity {
 
     private void requestAdForTaproll() {
         Tapsell.requestPreRollAd(
-                TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL).get(0).getId(),
+                TapsellKeyProvider.zonesFor(this, ZoneType.PRE_ROLL).get(0).getId(),
                 new RequestResultListener() {
                     @Override
                     public void onSuccess(@NonNull String adId) {

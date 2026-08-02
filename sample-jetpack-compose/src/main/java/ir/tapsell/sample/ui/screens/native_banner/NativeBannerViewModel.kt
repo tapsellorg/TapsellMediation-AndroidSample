@@ -1,6 +1,7 @@
 package ir.tapsell.sample.ui.screens.native_banner
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,11 +31,11 @@ class NativeBannerViewModel : BaseViewModel() {
     var isDestroyButtonEnabled by mutableStateOf(false)
         private set
 
-    fun requestAd() {
+    fun requestAd(context: Context) {
         // destroy previous ad if there is any to load new fresh ad
         responseId?.let { destroyAd() }
         Tapsell.requestNativeAd(
-            TapsellKeyProvider.zonesFor(ZoneType.NATIVE).first().id,
+            TapsellKeyProvider.zonesFor(context, ZoneType.NATIVE).first().id,
             object : RequestResultListener {
                 override fun onFailure(message: String) {
                     log(TAG, "onFailure: $message", Log.ERROR)

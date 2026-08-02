@@ -1,5 +1,6 @@
 package ir.tapsell.sample.ui.screens.preroll
 
+import android.content.Context
 import android.net.Uri
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
@@ -30,12 +31,12 @@ class PreRollViewModel : BaseViewModel() {
     var vastTag: String = ""
         private set
 
-    fun requestAd(exoplayer: ExoPlayer) {
+    fun requestAd(context: Context, exoplayer: ExoPlayer) {
         addLog("requestAd")
         adViewContainer.value?.let { adContainer ->
             adContainer.playerView.player = exoplayer
             Tapsell.requestPreRollAd(
-                TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL).first().id,
+                TapsellKeyProvider.zonesFor(context, ZoneType.PRE_ROLL).first().id,
                 adContainer.player,
                 adContainer.companion,
                 adContainer.playerView,
@@ -56,10 +57,10 @@ class PreRollViewModel : BaseViewModel() {
         } ?: addLog("AdViewContainer is null")
     }
 
-    fun requestAdForTaproll() {
+    fun requestAdForTaproll(context: Context) {
         addLog("requestAdForTaproll")
         Tapsell.requestPreRollAd(
-            TapsellKeyProvider.zonesFor(ZoneType.PRE_ROLL).first().id,
+            TapsellKeyProvider.zonesFor(context, ZoneType.PRE_ROLL).first().id,
             object : RequestResultListener {
                 override fun onSuccess(adId: String) {
                     preRollAds.add(adId)

@@ -31,7 +31,7 @@ class RewardedVideoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val zones = TapsellKeyProvider.zonesFor(ZoneType.REWARDED)
+        val zones = TapsellKeyProvider.zonesFor(requireContext(), ZoneType.REWARDED)
         zones.forEachIndexed { index, zone ->
             binding.zonesChips.addChip(requireContext(), zone.name, checked = index == 0) {
                 binding.inputZone.setText(zone.id)

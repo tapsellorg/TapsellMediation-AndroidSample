@@ -1,6 +1,7 @@
 package ir.tapsell.sample.ui.screens.interstitial
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,9 +25,9 @@ class InterstitialViewModel : BaseViewModel() {
         private const val TAG = "InterstitialViewModel"
     }
 
-    fun requestAd() {
+    fun requestAd(context: Context) {
         Tapsell.requestInterstitialAd(
-            TapsellKeyProvider.zonesFor(ZoneType.INTERSTITIAL).first().id,
+            TapsellKeyProvider.zonesFor(context, ZoneType.INTERSTITIAL).first().id,
             object : RequestResultListener {
                 override fun onFailure(message: String) {
                     log(TAG, "onFailure: $message", Log.ERROR)

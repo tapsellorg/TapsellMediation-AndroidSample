@@ -36,6 +36,7 @@ fun NativeBannerScreen(
     modifier: Modifier = Modifier,
     viewModel: NativeBannerViewModel = viewModel()
 ) {
+    val context = LocalActivity.current as Activity
     val logMessage by viewModel.logMessage.collectAsState()
 
     DisposableEffect(Unit) {
@@ -62,7 +63,7 @@ fun NativeBannerScreen(
 
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = (viewModel::requestAd)
+                onClick = { viewModel.requestAd(context) }
             ) {
                 Text(text = stringResource(ShR.string.request))
             }
