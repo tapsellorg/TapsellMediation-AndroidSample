@@ -70,6 +70,12 @@ jobs:
             echo "APP_NAME=${{ github.event.inputs.AppName }}"
           } >> "$GITHUB_ENV"
 
+      - name: Sanitize app name
+        run: |
+          APP_NAME=$(printf '%s' "${{ env.APP_NAME }}" | tr -cd '[:alnum:]')
+          [ -z "$APP_NAME" ] && APP_NAME='sample'
+          echo "APP_NAME=$APP_NAME" >> "$GITHUB_ENV"
+
       - name: Update app keys in build.gradle.kts
         run: |
           ./scripts/change-app.sh \
