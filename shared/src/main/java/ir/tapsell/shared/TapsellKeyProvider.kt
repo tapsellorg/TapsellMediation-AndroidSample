@@ -146,9 +146,10 @@ object TapsellKeyProvider {
                     val obj = arr.optJSONObject(i) ?: continue
                     val typeStr = obj.optString("type").uppercase().trim()
                     val type = runCatching { ZoneType.valueOf(typeStr) }.getOrNull()
-                    val name = obj.optString("name").trim()
+                    val rawName = obj.optString("name").trim()
+                    val name = rawName
                         .split(" ").filterNot { it.contentEquals(typeStr, ignoreCase = true) }
-                        .joinToString(" ")
+                        .joinToString(" ").ifBlank { rawName }
                     val id = obj.optString("id").trim()
                     if (name.isNotBlank() && id.isNotBlank() && type != null) {
                         add(Zone(name, type, id))
