@@ -36,6 +36,12 @@
             app:popUpToSaveState="true"
             app:restoreState="true" />
         <action
+            android:id="@+id/action_fragment_home_to_fragment_native_list"
+            app:destination="@id/fragment_native_list"
+            app:popUpTo="@+id/fragment_home"
+            app:popUpToSaveState="true"
+            app:restoreState="true" />
+        <action
             android:id="@+id/action_fragment_home_to_fragment_preroll"
             app:destination="@id/fragment_preroll"
             app:popUpToSaveState="true"
@@ -75,6 +81,10 @@
         android:name="ir.tapsell.sample.native.NativeFragment"
         android:label="@string/native_banner"
         tools:layout="@layout/fragment_native" />
+    <fragment
+        android:id="@+id/fragment_native_list"
+        android:name="ir.tapsell.sample.nativelist.NativeListFragment"
+        android:label="@string/native_list" />
 
     <fragment
         android:id="@+id/fragment_preroll"
