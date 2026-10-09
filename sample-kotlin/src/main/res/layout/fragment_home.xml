@@ -38,6 +38,13 @@
             android:text="@string/native_ad" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_native_list_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/space_small"
+            android:text="@string/native_list" />
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_standard_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

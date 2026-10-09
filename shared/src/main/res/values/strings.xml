@@ -13,6 +13,7 @@
     <string name="preroll">PreRoll</string>
     <string name="app_open">AppOpen</string>
     <string name="native_ad">Native</string>
+    <string name="native_list">Native List</string>
     <string name="replay_video">Replay Video</string>
     <string name="sponsored">Sponsored</string>
 </resources>
