@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import ir.tapsell.mediation.ad.views.ntv.NativeAdViewContainer
 import ir.tapsell.sample.R
 import ir.tapsell.sample.databinding.FragmentNativeBinding
-import ir.tapsell.sample.utils.addChip
 import ir.tapsell.shared.MULTIPLE_NATIVE_REQUESTS_COUNT
 import ir.tapsell.shared.TapsellKeyProvider
 import ir.tapsell.shared.ZoneType
@@ -36,10 +35,9 @@ class NativeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val zones = TapsellKeyProvider.zonesFor(requireContext(), ZoneType.NATIVE)
+        binding.zonesChips.setCheckedListener { binding.inputZone.setText(zones[it].id) }
         zones.forEachIndexed { index, zone ->
-            binding.zonesChips.addChip(requireContext(), zone.name, checked = index == 0) {
-                binding.inputZone.setText(zone.id)
-            }
+            binding.zonesChips.addChip(zone.name, checked = index == 0)
         }
         binding.inputZone.setText(zones.firstOrNull()?.id)
 

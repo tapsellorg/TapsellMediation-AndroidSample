@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import ir.tapsell.sample.databinding.FragmentInterstitialBinding
-import ir.tapsell.sample.utils.addChip
 import ir.tapsell.shared.TapsellKeyProvider
 import ir.tapsell.shared.ZoneType
 import kotlinx.coroutines.Dispatchers
@@ -32,10 +31,9 @@ class AppOpenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val zones = TapsellKeyProvider.zonesFor(requireContext(), ZoneType.APP_OPEN)
+        binding.zonesChips.setCheckedListener { binding.inputZone.setText(zones[it].id) }
         zones.forEachIndexed { index, zone ->
-            binding.zonesChips.addChip(requireContext(), zone.name, checked = index == 0) {
-                binding.inputZone.setText(zone.id)
-            }
+            binding.zonesChips.addChip(zone.name, checked = index == 0)
         }
         binding.inputZone.setText(zones.firstOrNull()?.id)
         binding.btnRequest.setOnClickListener {

@@ -18,7 +18,6 @@ import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import ir.tapsell.mediation.taproll.exo.TaprollAdLoader
 import ir.tapsell.sample.R
 import ir.tapsell.sample.databinding.FragmentPrerollBinding
-import ir.tapsell.sample.utils.addChip
 import ir.tapsell.shared.SampleVideosUrl
 import ir.tapsell.shared.TapsellKeyProvider
 import ir.tapsell.shared.ZoneType
@@ -48,10 +47,9 @@ class PreRollFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val zones = TapsellKeyProvider.zonesFor(requireContext(), ZoneType.PRE_ROLL)
+        binding.zonesChips.setCheckedListener { binding.inputZone.setText(zones[it].id) }
         zones.forEachIndexed { index, zone ->
-            binding.zonesChips.addChip(requireContext(), zone.name, checked = index == 0) {
-                binding.inputZone.setText(zone.id)
-            }
+            binding.zonesChips.addChip(zone.name, checked = index == 0)
         }
         binding.inputZone.setText(zones.firstOrNull()?.id)
 
